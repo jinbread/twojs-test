@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="js/two.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h1>two.js test</h1>
+          <span class="badge badge-pill badge-success">javascript</span>
+          <span class="badge badge-pill badge-success">two.js</span>
+        </div>
+        <div class="col-sm"></div>
+      </div>
+
+    </div>
+    <script>
+      var two = new Two({
+        fullscreen: true,
+        autostart: true
+      }).appendTo(document.body);
+
+      var rectArray = [];
+      for (var i = 0; i < 50; i++) {
+        rectArray.push(two.makeRectangle(two.width / 2, two.height / 2, 10 * i ,10 * i));
+        rectArray[i].fill = 'transparent';
+      }
+
+      two.bind('update', function() {
+        for(var i = 0; i < rectArray.length; i++) {
+          rectArray[i].rotation += 0.001;
+        }
+      });
+
+    </script>
+  </body>
+</html>
